@@ -1,0 +1,451 @@
+﻿Country Name,Total Value ($m),Data set
+Afghanistan,0,Import
+Albania,3,Import
+Algeria,655,Import
+Angola,0,Import
+Anguilla,1,Import
+"Antarctica, nfd",0,Import
+Antigua and Barbuda,1,Import
+Argentina,722,Import
+Armenia,2,Import
+Austria,1667,Import
+Azerbaijan,121,Import
+Bahamas,2,Import
+Bahrain,117,Import
+Bangladesh,1045,Import
+Barbados,2,Import
+Belarus,32,Import
+Belgium,1972,Import
+Belize,4,Import
+Benin,0,Import
+Bermuda,0,Import
+Bhutan,1,Import
+Bolivia,20,Import
+Bosnia and Herzegovina,20,Import
+Botswana,1,Import
+Brazil,845,Import
+Brunei Darussalam,1334,Import
+Bulgaria,106,Import
+Burkina Faso,0,Import
+Burundi,1,Import
+Cabo Verde,0,Import
+Cambodia,278,Import
+Cameroon,1,Import
+Canada,2562,Import
+Cayman Islands,0,Import
+Central African Republic,0,Import
+Chad,0,Import
+Chile,592,Import
+China,80844,Import
+Christmas Island,0,Import
+Cocos (Keeling) Islands,1,Import
+Colombia,108,Import
+Comoros,0,Import
+"Congo, Democratic Republic of",1,Import
+"Congo, Republic of",129,Import
+Cook Islands,0,Import
+Costa Rica,128,Import
+Cote d'Ivoire,42,Import
+Croatia,38,Import
+Cuba,10,Import
+Cyprus,36,Import
+Czechia,744,Import
+Greenland,1346,Import
+Faroe Islands,1346,Import
+Denmark,1346,Import
+Djibouti,1,Import
+Dominica,0,Import
+Dominican Republic,54,Import
+Ecuador,22,Import
+Egypt,49,Import
+El Salvador,9,Import
+Equatorial Guinea,0,Import
+Eritrea,0,Import
+Estonia,212,Import
+Eswatini,0,Import
+Ethiopia,25,Import
+Falkland Islands (includes South Georgia and South Sandwich Islands),0,Import
+Fiji,176,Import
+Finland,1462,Import
+France (includes Andorra and Monaco),6156,Import
+French Antilles (Guadeloupe and Martinique),2,Import
+French Guiana,0,Import
+French Polynesia,3,Import
+French Southern Territories,0,Import
+Gabon,92,Import
+Gambia,0,Import
+Georgia,4,Import
+Germany,13693,Import
+Ghana,78,Import
+Gibraltar,0,Import
+Greece,347,Import
+Grenada,0,Import
+Guam,1,Import
+Guatemala,27,Import
+Guinea,0,Import
+Guinea0Bissau,0,Import
+Guyana,1,Import
+Haiti,3,Import
+Honduras,79,Import
+Hong Kong (SAR of China),736,Import
+Hungary,930,Import
+Iceland,13,Import
+India,4756,Import
+Indonesia,4849,Import
+Iran,26,Import
+Iraq,0,Import
+Ireland,1982,Import
+Israel,797,Import
+Italy (includes Holy See and San Marino),6720,Import
+Jamaica,2,Import
+Japan,19100,Import
+Jordan,42,Import
+Kazakhstan,23,Import
+Kenya,35,Import
+Kiribati,0,Import
+"Korea, Republic of (South)",10456,Import
+Kuwait,15,Import
+Kyrgyzstan,0,Import
+Laos,30,Import
+Latvia,60,Import
+Lebanon,22,Import
+Lesotho,1,Import
+Liberia,0,Import
+Libya,737,Import
+Lithuania,132,Import
+Luxembourg,33,Import
+Macau (SAR of China),57,Import
+Madagascar,21,Import
+Malawi,0,Import
+Malaysia,10076,Import
+Maldives,4,Import
+Mali,232,Import
+Malta,19,Import
+Marshall Islands,0,Import
+Mauritania,99,Import
+Mauritius,12,Import
+Mexico,3012,Import
+"Micronesia, Federated States of",0,Import
+Moldova,5,Import
+Mongolia,2,Import
+Montenegro,1,Import
+Montserrat,0,Import
+Morocco,59,Import
+Mozambique,20,Import
+Myanmar,61,Import
+Namibia,14,Import
+Nauru,3,Import
+Nepal,7,Import
+Netherlands,2795,Import
+"Netherlands Antilles, nfd",0,Import
+New Caledonia,11,Import
+New Zealand,7469,Import
+Nicaragua,18,Import
+Niger,2,Import
+Nigeria,394,Import
+Niue,0,Import
+Norfolk Island,0,Import
+North Macedonia,11,Import
+Northern Mariana Islands,0,Import
+Norway,357,Import
+Oman,24,Import
+Pakistan,360,Import
+Palau,0,Import
+Panama,5,Import
+Papua New Guinea,3957,Import
+Paraguay,2,Import
+Peru,193,Import
+Philippines,623,Import
+Pitcairn Islands,0,Import
+Poland,1341,Import
+"Polynesia (excludes Hawaii), nec",0,Import
+Portugal,270,Import
+Puerto Rico,281,Import
+Qatar,295,Import
+Reunion,0,Import
+Romania,206,Import
+Russian Federation,250,Import
+Rwanda,1,Import
+Samoa,5,Import
+"Samoa, American",14,Import
+Sao Tome and Principe,0,Import
+Saudi Arabia,634,Import
+Senegal,81,Import
+Serbia,40,Import
+Seychelles,4,Import
+Sierra Leone,2,Import
+Singapore,9160,Import
+Slovakia,455,Import
+Slovenia,182,Import
+Solomon Islands,9,Import
+Somalia,0,Import
+South Africa,979,Import
+South Sudan,0,Import
+"Southern and East Africa, nec",0,Import
+Spain,2099,Import
+Sri Lanka,267,Import
+St Helena,1,Import
+St Kitts and Nevis,0,Import
+St Lucia,0,Import
+St Pierre and Miquelon,0,Import
+St Vincent and the Grenadines,0,Import
+Sudan,0,Import
+Suriname,0,Import
+Sweden,1891,Import
+Switzerland (includes Liechtenstein),3459,Import
+Syria,2,Import
+Taiwan,5193,Import
+Tajikistan,0,Import
+Tanzania,8,Import
+Thailand,14545,Import
+Timor0Leste,1,Import
+Togo,13,Import
+Tonga,2,Import
+Trinidad and Tobago,6,Import
+Tunisia,39,Import
+Türkiye,1081,Import
+Turkmenistan,0,Import
+Turks and Caicos Islands,0,Import
+Tuvalu,0,Import
+Uganda,4,Import
+Ukraine,85,Import
+United Arab Emirates,1951,Import
+"United Kingdom, Channel Islands and Isle of Man, nfd",6942,Import
+United States of America,36332,Import
+Unknown,0,Import
+Uruguay,10,Import
+Uzbekistan,1,Import
+Vanuatu,2,Import
+Venezuela,1,Import
+Vietnam,6138,Import
+"Virgin Islands, British",2,Import
+"Virgin Islands, United States",1,Import
+Wallis and Futuna,0,Import
+Western Sahara,0,Import
+Yemen,88,Import
+Zambia,31,Import
+Zimbabwe,0,Import
+Afghanistan,1,Export
+Albania,1,Export
+Algeria,4,Export
+Angola,5,Export
+Anguilla,0,Export
+"Antarctica, nfd",7,Export
+Antigua and Barbuda,1,Export
+Argentina,215,Export
+Armenia,1,Export
+Austria,38,Export
+Azerbaijan,5,Export
+Bahamas,834,Export
+Bahrain,941,Export
+Bangladesh,4,Export
+Barbados,8,Export
+Belarus,1020,Export
+Belgium,0,Export
+Belize,0,Export
+Benin,3,Export
+Bermuda,1,Export
+Bhutan,1,Export
+Bolivia,0,Export
+Bosnia and Herzegovina,26,Export
+Botswana,819,Export
+Brazil,51,Export
+Brunei Darussalam,36,Export
+Bulgaria,10,Export
+Burkina Faso,0,Export
+Burundi,0,Export
+Cabo Verde,109,Export
+Cambodia,1,Export
+Cameroon,2092,Export
+Canada,1,Export
+Cayman Islands,0,Export
+Central African Republic,0,Export
+Chad,348,Export
+Chile,150378,Export
+China,27,Export
+Christmas Island,7,Export
+Cocos (Keeling) Islands,31,Export
+Colombia,0,Export
+Comoros,3,Export
+"Congo, Democratic Republic of",18,Export
+"Congo, Republic of",10,Export
+Cook Islands,4,Export
+Costa Rica,81,Export
+Cote d'Ivoire,4,Export
+Croatia,1,Export
+Cuba,6,Export
+Cyprus,117,Export
+Czechia,122,Export
+Denmark (includes Greenland and Faroe Islands),2,Export
+Djibouti,0,Export
+Dominica,15,Export
+Dominican Republic,12,Export
+Ecuador,514,Export
+Egypt,7,Export
+El Salvador,1,Export
+Equatorial Guinea,3,Export
+Eritrea,23,Export
+Estonia,0,Export
+Eswatini,6,Export
+Ethiopia,0,Export
+Falkland Islands (includes South Georgia and South Sandwich Islands),407,Export
+Fiji,66,Export
+Finland,1347,Export
+France (includes Andorra and Monaco),1,Export
+French Antilles (Guadeloupe and Martinique),0,Export
+French Guiana,59,Export
+French Polynesia,27,Export
+French Southern Territories,0,Export
+Gabon,44,Export
+Gambia,3557,Export
+Georgia,93,Export
+Germany,0,Export
+Ghana,45,Export
+Gibraltar,0,Export
+Greece,12,Export
+Grenada,3,Export
+Guam,6,Export
+Guatemala,0,Export
+Guinea,6,Export
+Guinea0Bissau,0,Export
+Guyana,2,Export
+Haiti,6903,Export
+Honduras,56,Export
+Hong Kong (SAR of China),93,Export
+Hungary,10765,Export
+Iceland,5770,Export
+India,17,Export
+Indonesia,24,Export
+Iran,104,Export
+Iraq,242,Export
+Ireland,578,Export
+Israel,31,Export
+Italy (includes Holy See and San Marino),52784,Export
+Jamaica,164,Export
+Japan,24,Export
+Jordan,79,Export
+Kazakhstan,19,Export
+Kenya,0,Export
+Kiribati,25130,Export
+"Korea, Republic of (South)",415,Export
+Kuwait,11,Export
+Kyrgyzstan,28,Export
+Laos,18,Export
+Latvia,34,Export
+Lebanon,0,Export
+Lesotho,1,Export
+Liberia,1,Export
+Libya,9,Export
+Lithuania,15,Export
+Luxembourg,68,Export
+Macau (SAR of China),19,Export
+Madagascar,0,Export
+Malawi,7986,Export
+Malaysia,48,Export
+Maldives,27,Export
+Mali,5,Export
+Malta,7,Export
+Marshall Islands,9,Export
+Mauritania,96,Export
+Mauritius,254,Export
+Mexico,6,Export
+"Micronesia, Federated States of",0,Export
+Moldova,43,Export
+Mongolia,0,Export
+Montenegro,0,Export
+Montserrat,28,Export
+Morocco,464,Export
+Mozambique,168,Export
+Myanmar,10,Export
+Namibia,47,Export
+Nauru,38,Export
+Nepal,3029,Export
+Netherlands,0,Export
+"Netherlands Antilles, nfd",461,Export
+New Caledonia,9957,Export
+New Zealand,0,Export
+Nicaragua,0,Export
+Niger,64,Export
+Nigeria,1,Export
+Niue,15,Export
+Norfolk Island,2,Export
+North Macedonia,2,Export
+Northern Mariana Islands,104,Export
+Norway,423,Export
+Oman,422,Export
+Pakistan,2,Export
+Palau,74,Export
+Panama,2324,Export
+Papua New Guinea,2,Export
+Paraguay,102,Export
+Peru,2125,Export
+Philippines,0,Export
+Pitcairn Islands,439,Export
+Poland,0,Export
+"Polynesia (excludes Hawaii), nec",20,Export
+Portugal,2,Export
+Puerto Rico,711,Export
+Qatar,5,Export
+Reunion,31,Export
+Romania,723,Export
+Russian Federation,1,Export
+Rwanda,51,Export
+Samoa,11,Export
+"Samoa, American",0,Export
+Sao Tome and Principe,829,Export
+Saudi Arabia,29,Export
+Senegal,2,Export
+Serbia,7,Export
+Seychelles,2,Export
+Sierra Leone,12420,Export
+Singapore,4,Export
+Slovakia,64,Export
+Slovenia,101,Export
+Solomon Islands,2,Export
+Somalia,1253,Export
+South Africa,0,Export
+South Sudan,0,Export
+"Southern and East Africa, nec",357,Export
+Spain,237,Export
+Sri Lanka,0,Export
+St Helena,0,Export
+St Kitts and Nevis,2,Export
+St Lucia,0,Export
+St Pierre and Miquelon,0,Export
+St Vincent and the Grenadines,10,Export
+Sudan,12,Export
+Suriname,417,Export
+Sweden,2128,Export
+Switzerland (includes Liechtenstein),1,Export
+Syria,11755,Export
+Taiwan,0,Export
+Tajikistan,43,Export
+Tanzania,4206,Export
+Thailand,72,Export
+Timor0Leste,5,Export
+Togo,19,Export
+Tonga,33,Export
+Trinidad and Tobago,1,Export
+Tunisia,432,Export
+Türkiye,0,Export
+Turkmenistan,0,Export
+Turks and Caicos Islands,3,Export
+Tuvalu,2,Export
+Uganda,28,Export
+Ukraine,3316,Export
+United Arab Emirates,15632,Export
+"United Kingdom, Channel Islands and Isle of Man, nfd",17494,Export
+United States of America,0,Export
+Unknown,10,Export
+Uruguay,8,Export
+Uzbekistan,76,Export
+Vanuatu,5,Export
+Venezuela,6228,Export
+Vietnam,0,Export
+"Virgin Islands, British",1,Export
+"Virgin Islands, United States",4,Export
+Wallis and Futuna,0,Export
+Western Sahara,230,Export
+Yemen,10,Export
+Zambia,2,Export
+Zimbabwe,,Export
