@@ -14,8 +14,8 @@
 
     /* Title bar styling */
     #title-bar {
-      background-color: rgb(111, 122, 205);
-      color: rgb(228, 213, 213);
+      background-color: rgb(142, 163, 188);
+      color: rgb(255, 240, 240);
       text-align: center;
       font-size: 24px;
       font-weight: bold;
@@ -49,7 +49,7 @@
 <body>
 
   <div id="title-bar">Imports of Goods to Australia in 2020</div>
-  <label for="dropdown" style="position: absolute; top: 50px; left: 0px; z-index: 100; background-color: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px;">
+  <label for="dropdown" style="position: absolute; top: 50px; left: 5px; z-index: 100; background-color: rgba(255, 255, 255, 0.9); padding: 5px; border-radius: 5px; font-family: 'Arial', sans-serif; font-size: 16px; color: #333;">
     Select Trade Type:
   </label>
   <!-- map container that will fill the full screen -->
@@ -91,7 +91,8 @@
               }
             },
             {
-              "calculate": "datum[data_type] == null || datum[data_type] == 0 ? 'No ' + data_type + ' Goods from ' + datum['properties.NAME'] : null",
+              // Single calculate statement handling both Import and Export cases
+              "calculate": "(datum[data_type] == null || datum[data_type] == 0) ? (data_type == 'Import' ? 'No Import Goods from ' : 'No Export Goods to ') + datum['properties.NAME'] : null",
               "as": "note"
             }
           ],
@@ -136,14 +137,13 @@
               "field": "Log Trade Value ($m)", // Color countries based on selected data
               "type": "quantitative",
               "scale": {
-                "type": "log",
-                "domainMin": 1, // Ensure the color scale starts from 1
-                "nice": true
+                "type": "threshold",
+                "domain": [100, 1000, 10000,50000],
+                "range":["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45", "#005a32"]
               },
               "legend": {
                 "orient": "top-right",  // Position the legend inside the map
-                "offset": 40,  // Offset from the corner
-                "title": "Value of Merchandise Goods($m)"
+                "title": "Value of Goods($m)"
               }
             },
             "tooltip": [
@@ -159,11 +159,6 @@
     // Append the dropdown to the map container
     document.getElementById('map').appendChild(result.view.container());
 
-    // Apply custom styles to the dropdown (select element)
-    const dropdown = document.querySelector('select');
-    dropdown.style.fontFamily = 'Times New Roman, serif'; // Change font-family
-    dropdown.style.fontSize = '14px';               // Change font size
-    dropdown.style.color = '#333';                  // Change text color
   }).catch(console.error);
   </script>
 </body>
