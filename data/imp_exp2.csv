@@ -17,7 +17,6 @@ Barbados,4,2
 Belarus,8,32
 Belgium,1020,1972
 Belize,0,4
-Benin,0,0
 Bermuda,3,0
 Bhutan,1,1
 Bolivia,1,20
@@ -28,21 +27,17 @@ Brunei Darussalam,51,1334
 Bulgaria,36,106
 Burkina Faso,10,0
 Burundi,0,1
-Cabo Verde,0,0
 Cambodia,109,278
 Cameroon,1,1
 Canada,2092,2562
 Cayman Islands,1,0
-Central African Republic,0,0
-Chad,0,0
 Chile,348,592
 China,150378,80844
 Christmas Island,27,0
 Cocos (Keeling) Islands,7,1
 Colombia,31,108
-Comoros,0,0
-Congo [DRC],3,1
-Congo [Republic],18,129
+Dem. Rep. Congo,3,1
+Congo,18,129
 Cook Islands,10,0
 Costa Rica,4,128
 Cote d'Ivoire,81,42
@@ -54,7 +49,6 @@ Greenland,122,1346
 Faroe Islands,122,1346
 Denmark,122,1346
 Djibouti,2,1
-Dominica,0,0
 Dominican Republic,15,54
 Ecuador,12,22
 Egypt,514,49
@@ -62,30 +56,22 @@ El Salvador,7,9
 Equatorial Guinea,1,0
 Eritrea,3,0
 Estonia,23,212
-Eswatini,0,0
 Ethiopia,6,25
-South Georgia and the South Sandwich Islands,0,0
-Falkland Islands,0,0
 Fiji,407,176
 Finland,66,1462
 Andorra,1347,6156
 Monaco,1347,6156
 France,1347,6156
 French Antilles,1,2
-French Guiana,0,0
 French Polynesia,59,3
 Gabon,27,92
-Gambia,0,0
 Georgia,44,4
 Germany,3557,13693
 Ghana,93,78
-Gibraltar,0,0
 Greece,45,347
-Grenada,0,0
 Guam,12,1
 Guatemala,3,27
 Guinea,6,0
-Guinea-Bissau,0,0
 Guyana,6,1
 Haiti,0,3
 Honduras,2,79
@@ -119,7 +105,6 @@ Lithuania,9,132
 Luxembourg,15,33
 Macau,68,57
 Madagascar,19,21
-Malawi,0,0
 Malaysia,7986,10076
 Maldives,48,4
 Mali,27,232
@@ -132,7 +117,6 @@ Micronesia,6,0
 Moldova,0,5
 Mongolia,43,2
 Montenegro,0,1
-Montserrat,0,0
 Morocco,28,59
 Mozambique,464,20
 Myanmar,168,61
@@ -140,7 +124,6 @@ Namibia,10,14
 Nauru,47,3
 Nepal,38,7
 Netherlands,3029,2795
-Netherlands Antilles,0,0
 New Caledonia,461,11
 New Zealand,9957,7469
 Nicaragua,0,18
@@ -159,7 +142,6 @@ Papua New Guinea,2324,3957
 Paraguay,2,2
 Peru,102,193
 Philippines,2125,623
-Pitcairn Islands,0,0
 Poland,439,1341
 Portugal,20,270
 Puerto Rico,2,281
@@ -180,14 +162,10 @@ Slovenia,64,182
 Solomon Islands,101,9
 Somalia,2,0
 South Africa,1253,979
-South Sudan,0,0
 Spain,357,2099
 Sri Lanka,237,267
 Saint Helena,0,1
-Saint Kitts and Nevis,0,0
 Saint Lucia,2,0
-Saint Pierre and Miquelon,0,0
-Saint Vincent and the Grenadines,0,0
 Sudan,10,0
 Suriname,12,0
 Sweden,417,1891
@@ -195,7 +173,6 @@ Liechtenstein,2128,3459
 Switzerland ,2128,3459
 Syria,1,2
 Taiwan,11755,5193
-Tajikistan,0,0
 Tanzania,43,8
 Thailand,4206,14545
 Timor0Leste,72,1
@@ -204,8 +181,6 @@ Tonga,19,2
 Trinidad and Tobago,33,6
 Tunisia,1,39
 Türkiye,432,1081
-Turkmenistan,0,0
-Turks and Caicos Islands,0,0
 Tuvalu,3,0
 Uganda,2,4
 Ukraine,28,85
@@ -220,7 +195,6 @@ Vietnam,6228,6138
 British Virgin Islands,0,2
 U.S. Virgin Islands,1,1
 Wallis and Futuna,4,0
-Western Sahara,0,0
 Yemen,230,88
 Zambia,10,31
 Zimbabwe,2,0
