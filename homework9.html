@@ -31,19 +31,18 @@
     #map {
       position: relative;
       padding-top: 40px;
-      width: 103%;
+      width: 100%;
       height: 100%;
     }
 
-    /* Legend positioned on top of the map */
-    .legend-container {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      z-index: 100;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
-      padding: 10px;
-      border-radius: 5px;
+    #map select {
+    position: absolute;
+    top: 50px; /* Adjust this to move the dropdown up or down */
+    left: 20px;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 5px;
     }
   </style>
 </head>
@@ -53,6 +52,7 @@
 
   <!-- map container that will fill the full screen -->
   <div id="map"></div>
+  
   <script type="text/javascript">
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -64,20 +64,19 @@
         "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      // Define the parameter for selecting Import or Export
       "params": [
         {
           "name": "data_type",
-          "value": "Import",  // Initial value
+          "value": "Import",  // Default value for the dropdown
           "bind": {
             "input": "select",
             "options": ["Import", "Export"],
-            "name": "Select Data Type: "
+            "name": "Select Trade Type: "
           }
         }
       ],
       "layer": [
-        // Layer for countries with no data or 0 values (gray fill)
+        // Grey layer for countries with no data or zero value
         {
           "transform": [
             {
@@ -91,7 +90,7 @@
               }
             },
             {
-              "calculate": "datum[data_type] == null || datum[data_type] == 0 ? 'There is no ' + data_type + ' goods from ' + datum['properties.NAME'] : null",
+              "calculate": "datum[data_type] == null || datum[data_type] == 0 ? 'No' + data_type + ' Goods from ' + datum['properties.NAME'] : null",
               "as": "note"
             }
           ],
@@ -114,17 +113,22 @@
               }
             },
             {
-              "filter": "datum[data_type] > 0"  // Only show countries with selected data > 0
+              // Dynamically reference the correct column for Import or Export
+              "calculate": "datum[data_type]",
+              "as": "Selected Trade Value ($m)"
             },
             {
-              "calculate": "datum[data_type] + 0.1", 
-              "as": "Total of Selected Goods ($m)"
+              "calculate": "datum[data_type] + 0.1",
+              "as": "Log Trade Value ($m)"
+            },
+            {
+              "filter": "datum['Selected Trade Value ($m)'] > 0"  // Only show countries with selected data > 0
             }
           ],
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "Total of Selected Goods ($m)", // Color countries based on selected data
+              "field": "Log Trade Value ($m)", // Color countries based on selected data
               "type": "quantitative",
               "scale": {
                 "type": "log",
@@ -139,14 +143,18 @@
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "data_type", "type": "quantitative", "title": "Selected Value ($m)"}
+              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Selected Value ($m)"}
             ]
           }
         }
       ]
     };
 
-    vegaEmbed('#map', spec).catch(console.error);
-  </script> 
+    // Embed the dropdown inside the map and load the visualization
+    vegaEmbed('#map', spec).then((result) => {
+      // Append the dropdown to the map container
+      document.getElementById('map').appendChild(result.view.container());
+    }).catch(console.error);
+  </script>
 </body>
 </html>
