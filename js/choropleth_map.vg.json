@@ -63,7 +63,7 @@
           },
           "legend": {
             "orient": "top-right",  
-            "offset": 40,  // Offset from the corner
+            "offset": 40,  
             "title": "Total Import Goods ($m)"
           }
         },

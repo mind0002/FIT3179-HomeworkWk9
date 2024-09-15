@@ -37,11 +37,11 @@
 
     #map select {
     position: absolute;
-    top: 80px; /* Adjust this to move the dropdown up or down */
-    left: 10px;
+    top: 50px; /* Adjust this to move the dropdown up or down */
+    left: 20px;
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     }
   </style>
@@ -49,11 +49,10 @@
 <body>
 
   <div id="title-bar">Imports of Goods to Australia in 2020</div>
-  <label for="dropdown" style="position: absolute; top: 50px; left: 0px; z-index: 100; background-color: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px;">
-    Select Trade Type:
-  </label>
+
   <!-- map container that will fill the full screen -->
-  <div id="map"> </div>
+  <div id="map"></div>
+  
   <script type="text/javascript">
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -68,15 +67,22 @@
       "params": [
         {
           "name": "data_type",
-          "value": "Import",
+          "value": "Import",  // Default value for the dropdown
           "bind": {
             "input": "select",
             "options": ["Import", "Export"],
-            "name": "Select Trade Type: "  // Label for the dropdown
+            "name": "Select Trade Type: "
           }
         }
       ],
       "layer": [
+        {
+        "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        },
         // Grey layer for countries with no data or zero value
         {
           "transform": [
@@ -91,7 +97,7 @@
               }
             },
             {
-              "calculate": "datum[data_type] == null || datum[data_type] == 0 ? 'No ' + data_type + ' Goods from ' + datum['properties.NAME'] : null",
+              "calculate": "datum[data_type] == null || datum[data_type] == 0 ? 'No' + data_type + ' Goods from ' + datum['properties.NAME'] : null",
               "as": "note"
             }
           ],
@@ -123,7 +129,7 @@
               "as": "Log Trade Value ($m)"
             },
             {
-              "calculate": " 'Total' + data_type + ' Value ($m)'",  // Create the dynamic title for the tooltip
+              "calculate": "data_type + ' Value ($m)'",  // Create the dynamic title for the tooltip
               "as": "dynamic_tooltip_title"
             },
             {
@@ -143,28 +149,23 @@
               "legend": {
                 "orient": "top-right",  // Position the legend inside the map
                 "offset": 40,  // Offset from the corner
-                "title": "Value of Merchandise Goods($m)"
+                "title": "Total Selected Goods ($m)"
               }
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods($m)"}
+              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": {"expr": "datum.dynamic_tooltip_title"}}
             ]
           }
         }
       ]
     };
 
+    // Embed the dropdown inside the map and load the visualization
     vegaEmbed('#map', spec).then((result) => {
-    // Append the dropdown to the map container
-    document.getElementById('map').appendChild(result.view.container());
-
-    // Apply custom styles to the dropdown (select element)
-    const dropdown = document.querySelector('select');
-    dropdown.style.fontFamily = 'Times New Roman, serif'; // Change font-family
-    dropdown.style.fontSize = '14px';               // Change font size
-    dropdown.style.color = '#333';                  // Change text color
-  }).catch(console.error);
+      // Append the dropdown to the map container
+      document.getElementById('map').appendChild(result.view.container());
+    }).catch(console.error);
   </script>
 </body>
 </html>
