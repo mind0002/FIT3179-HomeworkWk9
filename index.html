@@ -11,10 +11,10 @@
       padding: 0;
       height: 100%;
     }
-
+    
     /* Title bar styling */
     #title-bar {
-      background-color: rgb(142, 163, 188);
+      background-color: rgb(23, 72, 29);
       color: rgb(255, 240, 240);
       text-align: center;
       font-size: 24px;
@@ -44,11 +44,12 @@
     padding: 10px;
     border-radius: 5px;
     }
+
   </style>
 </head>
 <body>
 
-  <div id="title-bar">Imports of Goods to Australia in 2020</div>
+  <div id="title-bar">Australia's Global Trade: Imports and Exports by Country in 2020</div>
   <label for="dropdown" style="position: absolute; top: 50px; left: 5px; z-index: 100; background-color: rgba(255, 255, 255, 0.9); padding: 5px; border-radius: 5px; font-family: 'Arial', sans-serif; font-size: 16px; color: #333;">
     Select Trade Type:
   </label>
@@ -101,6 +102,20 @@
             "tooltip": {"field": "note", "type": "nominal"}
           }
         },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/oceans.topojson",
+            "format": {"type": "topojson", "feature": "oceans"}
+          },
+          "mark": {"type": "geoshape", "fill": "skyblue"}
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+          },
+          "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        },
         // Layer for countries with Import/Export data > 0
         {
           "transform": [
@@ -134,16 +149,23 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "Log Trade Value ($m)", // Color countries based on selected data
+              "field": "Log Trade Value ($m)",  // Color countries based on selected data
               "type": "quantitative",
               "scale": {
-                "type": "threshold",
-                "domain": [100, 1000, 10000,50000],
-                "range":["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45", "#005a32"]
+                "type": "log",  // Use log scale for smooth transitions
+                "domain": [1, 100, 1000, 10000, 100000],  // Ensure domain includes the full range
+                "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45", "#005a32"]  // Green gradient
               },
               "legend": {
-                "orient": "top-right",  // Position the legend inside the map
-                "title": "Value of Goods($m)"
+                "orient": "top-right",     // Position the legend in the top-right
+                "direction": "horizontal", // Keep the legend horizontal
+                "title": "Value of Goods ($m)",  
+                "titleFontSize": 14,       // Increase the title font size
+                "labelFontSize": 12,       // Increase the label font size
+                "symbolLimit": 1000,       // Ensure the legend has enough symbols to stay long
+                "values": [1, 1000, 100000],  // Manually specify tick values
+                "offset": 15,              // Adjust spacing from the map
+                "padding": 20              // Add padding to spread out the legend items
               }
             },
             "tooltip": [
