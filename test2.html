@@ -116,7 +116,7 @@
           },
           "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
         },
-        // Layer for countries with Import/Export data > 0, normalized by GDP
+        // Layer for countries with categorized trade value based on GDP
         {
           "transform": [
             {
@@ -136,12 +136,13 @@
             },
             {
               // Calculate the normalized value (trade value as a percentage of GDP)
-              "calculate": "datum[data_type] / datum.GDP",
+              "calculate": "(datum.GDP != null && datum.GDP != 0) ? datum[data_type] / (datum.GDP/1000) : 0",
               "as": "Normalized Trade Value (%)"
             },
             {
-              "calculate": "'Trade value as a percentage of GDP: ' + datum['Normalized Trade Value (%)'] * 100 + '%'",
-              "as": "dynamic_tooltip_title"
+              // Categorize the normalized values into ranges
+              "calculate": "datum['Normalized Trade Value (%)'] <= 0.1 ? 'Very Low' : datum['Normalized Trade Value (%)'] <= 1 ? 'Low' : datum['Normalized Trade Value (%)'] <= 10 ? 'Moderate' : 'High'",
+              "as": "Trade-to-GDP Category"
             },
             {
               "filter": "datum['Selected Trade Value ($m)'] > 0"  // Only show countries with selected data > 0
@@ -150,29 +151,29 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "Normalized Trade Value (%)",  // Color countries based on normalized data
-              "type": "quantitative",
+              "field": "Trade-to-GDP Category",  // Color countries based on trade-to-GDP categories
+              "type": "nominal",
               "scale": {
-                "type": "log",  // Use log scale for smooth transitions
-                "domain": [0.0001, 0.01, 0.1, 1],  // Normalized trade value ranges
-                "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45", "#005a32"]  // Green gradient
+                "domain": ["Very Low", "Low", "Moderate", "High"],
+                "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45"]  // Green gradient for categories
               },
               "legend": {
-                "orient": "top-right",     // Position the legend in the top-right
+                "orient": "none",     // Position the legend in the top-right
                 "direction": "horizontal", // Keep the legend horizontal
-                "title": "Normalized Trade Value (%)",  
-                "titleFontSize": 14,       // Increase the title font size
+                "title": "Trade-to-GDP Category (GDP in $B USD)",  
+                "titleFontSize": 12,       // Increase the title font size
                 "labelFontSize": 12,       // Increase the label font size
-                "symbolLimit": 1000,       // Ensure the legend has enough symbols to stay long
-                "values": [0.0001, 0.01, 0.1, 1],  // Manually specify tick values
-                "offset": 15,              // Adjust spacing from the map
-                "padding": 20              // Add padding to spread out the legend items
+                "titleLimit": 300,
+                "legendX": 1195,
+                "legendY":10,
+                "offset": 1,              // Adjust spacing from the map
+                "padding": 10              // Add padding to spread out the legend items
               }
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m)"},
-              {"field": "Normalized Trade Value (%)", "type": "quantitative", "title": "Normalized Trade Value (%)"}
+              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m AUD)"},
+              {"field": "Trade-to-GDP Category", "type": "nominal", "title": "Trade-to-GDP Category"}
             ]
           }
         }
@@ -185,5 +186,6 @@
 
   }).catch(console.error);
   </script>
+
 </body>
 </html>
