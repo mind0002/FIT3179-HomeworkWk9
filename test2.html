@@ -85,10 +85,10 @@
               "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp.csv"
+                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
                 },
                 "key": "Country Name",
-                "fields": ["Import", "Export"]
+                "fields": ["Import", "Export", "GDP"]
               }
             },
             {
@@ -116,21 +116,17 @@
           },
           "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
         },
-        // Proportional circles based on Import/Export data
+        // Layer for countries with Import/Export data > 0, normalized by GDP
         {
-          "data": {
-            "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/countryInfo.csv",
-            "format": {"type": "csv"}
-          },
           "transform": [
             {
-              "lookup": "name",
+              "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp.csv"
+                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
                 },
                 "key": "Country Name",
-                "fields": ["Import", "Export"]
+                "fields": ["Import", "Export", "GDP"]
               }
             },
             {
@@ -139,24 +135,44 @@
               "as": "Selected Trade Value ($m)"
             },
             {
+              // Calculate the normalized value (trade value as a percentage of GDP)
+              "calculate": "datum[data_type] / datum.GDP",
+              "as": "Normalized Trade Value (%)"
+            },
+            {
+              "calculate": "'Trade value as a percentage of GDP: ' + datum['Normalized Trade Value (%)'] * 100 + '%'",
+              "as": "dynamic_tooltip_title"
+            },
+            {
               "filter": "datum['Selected Trade Value ($m)'] > 0"  // Only show countries with selected data > 0
             }
           ],
-          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
-            "longitude": {"field": "longitude", "type": "quantitative"},  // Ensure the field name matches exactly
-            "latitude": {"field": "latitude", "type": "quantitative"},    // Ensure the field name matches exactly
-            "size": {
-              "field": "Selected Trade Value ($m)",  // Scale circle size by the trade value
-              "type": "quantitative",
-              "scale": {"domain": [1, 100000], "range": [10, 5000]}  // Adjust the range for appropriate circle sizes
-            },
             "color": {
-              "value": "#41ab5d"  // Use a single color for the circles
+              "field": "Normalized Trade Value (%)",  // Color countries based on normalized data
+              "type": "quantitative",
+              "scale": {
+                "type": "log",  // Use log scale for smooth transitions
+                "domain": [0.0001, 0.01, 0.1, 1],  // Normalized trade value ranges
+                "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45", "#005a32"]  // Green gradient
+              },
+              "legend": {
+                "orient": "top-right",     // Position the legend in the top-right
+                "direction": "horizontal", // Keep the legend horizontal
+                "title": "Normalized Trade Value (%)",  
+                "titleFontSize": 14,       // Increase the title font size
+                "labelFontSize": 12,       // Increase the label font size
+                "symbolLimit": 1000,       // Ensure the legend has enough symbols to stay long
+                "values": [0.0001, 0.01, 0.1, 1],  // Manually specify tick values
+                "offset": 15,              // Adjust spacing from the map
+                "padding": 20              // Add padding to spread out the legend items
+              }
             },
             "tooltip": [
-              {"field": "name", "type": "nominal", "title": "Country"},  // Assuming 'country' is the field for country names
-              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m)"}
+              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m)"},
+              {"field": "Normalized Trade Value (%)", "type": "quantitative", "title": "Normalized Trade Value (%)"}
             ]
           }
         }
