@@ -1,120 +1,136 @@
-{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": null,
-      "width": "container",
-      "height": "container",
-      "projection": {"type": "equalEarth"},
-      "data": {
-        "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/ne_110m_admin_0_countries.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "params": [
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": null,
+  "width": "container",
+  "height": "container",
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "params": [
+    {
+      "name": "data_type",
+      "value": "Import",
+      "bind": {
+        "input": "select",
+        "options": ["Import", "Export"],
+        "name": "Select Trade Type: " 
+      }
+    }
+  ],
+  "layer": [
+    
+    {
+      "transform": [
         {
-          "name": "data_type",
-          "value": "Import",
-          "bind": {
-            "input": "select",
-            "options": ["Import", "Export"],
-            "name": "Select Trade Type: " 
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
+            },
+            "key": "Country Name",
+            "fields": ["Import", "Export", "GDP"]
           }
+        },
+        {
+          
+          "calculate": "(datum[data_type] == null || datum[data_type] == 0) ? (data_type == 'Import' ? 'No Import Goods from ' : 'No Export Goods to ') + datum['properties.NAME'] : null",
+          "as": "note"
         }
       ],
-      "layer": [
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+      "encoding": {
+        "tooltip": {"field": "note", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/WorldMapWithGraticules.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    
+    {
+      "transform": [
         {
-          "transform": [
-            {
-              "lookup": "properties.NAME",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
-                },
-                "key": "Country Name",
-                "fields": ["Import", "Export", "GDP"]
-              }
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
             },
-            {
-              "calculate": "(datum[data_type] == null || datum[data_type] == 0) ? (data_type == 'Import' ? 'No Import Goods from ' : 'No Export Goods to ') + datum['properties.NAME'] : null",
-              "as": "note"
-            }
-          ],
-          "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-          "encoding": {
-            "tooltip": {"field": "note", "type": "nominal"}
+            "key": "Country Name",
+            "fields": ["Import", "Export", "GDP"]
           }
         },
         {
-          "data": {
-            "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/oceans.topojson",
-            "format": {"type": "topojson", "feature": "oceans"}
-          },
-          "mark": {"type": "geoshape", "fill": "skyblue"}
+          
+          "calculate": "datum[data_type]",
+          "as": "Selected Trade Value ($m)"
         },
         {
-          "data": {
-            "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/WorldMapWithGraticules.topojson",
-            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
-          },
-          "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+          
+          "calculate": "(datum.GDP != null && datum.GDP != 0) ? datum[data_type] / (datum.GDP/1000) : 0",
+          "as": "Normalized Trade Value (%)"
         },
-        
         {
-          "transform": [
-            {
-              "lookup": "properties.NAME",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/data/imp_exp_gdp.csv"
-                },
-                "key": "Country Name",
-                "fields": ["Import", "Export", "GDP"]
-              }
-            },
-            {
-              
-              "calculate": "datum[data_type]",
-              "as": "Selected Trade Value ($m)"
-            },
-            {
-              
-              "calculate": "(datum.GDP != null && datum.GDP != 0) ? datum[data_type] / (datum.GDP/1000) : 0",
-              "as": "Normalized Trade Value (%)"
-            },
-            {
-              
-              "calculate": "datum['Normalized Trade Value (%)'] <= 0.1 ? 'Very Low' : datum['Normalized Trade Value (%)'] <= 1 ? 'Low' : datum['Normalized Trade Value (%)'] <= 10 ? 'Moderate' : 'High'",
-              "as": "Trade-to-GDP Category"
-            },
-            {
-              "filter": "datum['Selected Trade Value ($m)'] > 0"  
-            }
-          ],
-          "mark": {"type": "geoshape", "stroke": "black"},
-          "encoding": {
-            "color": {
-              "field": "Trade-to-GDP Category", 
-              "type": "nominal",
-              "scale": {
-                "domain": ["Very Low", "Low", "Moderate", "High"],
-                "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45"]  
-              },
-              "legend": {
-                "orient": "none",    
-                "direction": "horizontal", 
-                "title": "Trade-to-GDP Category (GDP in $B USD)",  
-                "titleFontSize": 12,       
-                "labelFontSize": 12,      
-                "titleLimit": 300,
-                "legendX": 1195,
-                "legendY":10,
-                "offset": 1,              
-                "padding": 10             
-              }
-            },
-            "tooltip": [
-              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m AUD)"},
-              {"field": "Trade-to-GDP Category", "type": "nominal", "title": "Trade-to-GDP Category"}
-            ]
-          }
+          "calculate": "datum['Normalized Trade Value (%)'] <= 0.1 ? 'Very Low' : datum['Normalized Trade Value (%)'] <= 1 ? 'Low' : datum['Normalized Trade Value (%)'] <= 10 ? 'Moderate' : 'High'",
+          "as": "Trade-to-GDP Category"
+        },
+        {
+          "filter": "datum['Selected Trade Value ($m)'] > 0"  
         }
-      ]
+      ],
+      "mark": {"type": "geoshape", "stroke": "black"},
+      "encoding": {
+        "color": {
+          "field": "Trade-to-GDP Category", 
+          "type": "nominal",
+          "scale": {
+            "domain": ["Very Low", "Low", "Moderate", "High"],
+            "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45"] 
+          },
+          "legend": {
+            "orient": "none",     
+            "direction": "horizontal", 
+            "title": "Trade-to-GDP Category (GDP in $B USD)",  
+            "titleFontSize": 12,       
+            "labelFontSize": 12,       
+            "titleLimit": 300,
+            "legendX": 1190,
+            "legendY":10,
+            "offset": 1,              
+            "padding": 10              
+          }
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m AUD)"},
+          {"field": "Trade-to-GDP Category", "type": "nominal", "title": "Trade-to-GDP Category"}
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.properties.NAME == 'Australia'"}
+      ],
+      "mark": {"type": "geoshape", "fill": "#FCD12A", "stroke": "black"},
+      "encoding": {
+        "longitude": {"value": 1330.775136},  
+        "latitude": {"value": -25.274398},
+        "text": {"value": "Australia"},
+        "opacity": {"value": 1}, 
+        "tooltip": {"value": "Australia"}
+      }
     }
+  ]
+}
