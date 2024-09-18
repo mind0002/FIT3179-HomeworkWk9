@@ -164,7 +164,7 @@
                 "titleFontSize": 12,       // Increase the title font size
                 "labelFontSize": 12,       // Increase the label font size
                 "titleLimit": 300,
-                "legendX": 1195,
+                "legendX": 1185,
                 "legendY":10,
                 "offset": 1,              // Adjust spacing from the map
                 "padding": 10              // Add padding to spread out the legend items
@@ -175,6 +175,20 @@
               {"field": "Selected Trade Value ($m)", "type": "quantitative", "title": "Value of Goods ($m AUD)"},
               {"field": "Trade-to-GDP Category", "type": "nominal", "title": "Trade-to-GDP Category"}
             ]
+          }
+        },
+        // Layer to highlight Australia
+        {
+          "transform": [
+            {"filter": "datum.properties.NAME == 'Australia'"}
+          ],
+          "mark": {"type": "geoshape", "fill": "#FCD12A", "stroke": "black"},
+          "encoding": {
+            "longitude": {"value": 1000.775136},  
+            "latitude": {"value": -25.274398},
+            "text": {"value": "Australia"},
+            "opacity": {"value": 1}, 
+            "tooltip": {"value": "Australia"}
           }
         }
       ]
