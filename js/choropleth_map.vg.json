@@ -15,12 +15,11 @@
       "bind": {
         "input": "select",
         "options": ["Import", "Export"],
-        "name": "Select Trade Type: " 
+        "name": "Select Trade Type: "
       }
     }
   ],
   "layer": [
-    
     {
       "transform": [
         {
@@ -34,7 +33,6 @@
           }
         },
         {
-          
           "calculate": "(datum[data_type] == null || datum[data_type] == 0) ? (data_type == 'Import' ? 'No Import Goods from ' : 'No Export Goods to ') + datum['properties.NAME'] : null",
           "as": "note"
         }
@@ -58,7 +56,6 @@
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
     },
-    
     {
       "transform": [
         {
@@ -72,13 +69,15 @@
           }
         },
         {
-          
           "calculate": "datum[data_type]",
           "as": "Selected Trade Value ($m)"
         },
         {
-          
-          "calculate": "(datum.GDP != null && datum.GDP != 0) ? datum[data_type] / (datum.GDP/1000) : 0",
+          "calculate": "(datum.GDP != null && datum.GDP != 0) ? (datum.GDP * 1.45) : 0",
+          "as": "GDP_AUD"
+        },
+        {
+          "calculate": "(datum.GDP_AUD != null && datum.GDP_AUD != 0) ? datum[data_type] / (datum.GDP_AUD/1000) : 0",
           "as": "Normalized Trade Value (%)"
         },
         {
@@ -86,29 +85,29 @@
           "as": "Trade-to-GDP Category"
         },
         {
-          "filter": "datum['Selected Trade Value ($m)'] > 0"  
+          "filter": "datum['Selected Trade Value ($m)'] > 0"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "black"},
       "encoding": {
         "color": {
-          "field": "Trade-to-GDP Category", 
+          "field": "Trade-to-GDP Category",
           "type": "nominal",
           "scale": {
             "domain": ["Very Low", "Low", "Moderate", "High"],
-            "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45"] 
+            "range": ["#e5f5e0", "#a1d99b", "#41ab5d", "#238b45"]
           },
           "legend": {
-            "orient": "none",     
-            "direction": "horizontal", 
-            "title": "Trade-to-GDP Category (GDP in $B USD)",  
-            "titleFontSize": 12,       
-            "labelFontSize": 12,       
+            "orient": "none",
+            "direction": "horizontal",
+            "title": "Trade-to-GDP Category",
+            "titleFontSize": 12,
+            "labelFontSize": 12,
             "titleLimit": 300,
             "legendX": 1190,
-            "legendY":10,
-            "offset": 1,              
-            "padding": 10              
+            "legendY": 10,
+            "offset": 1,
+            "padding": 10
           }
         },
         "tooltip": [
@@ -118,17 +117,16 @@
         ]
       }
     },
-
     {
       "transform": [
         {"filter": "datum.properties.NAME == 'Australia'"}
       ],
       "mark": {"type": "geoshape", "fill": "#FCD12A", "stroke": "black"},
       "encoding": {
-        "longitude": {"value": 1330.775136},  
+        "longitude": {"value": 133.775136},
         "latitude": {"value": -25.274398},
         "text": {"value": "Australia"},
-        "opacity": {"value": 1}, 
+        "opacity": {"value": 1},
         "tooltip": {"value": "Australia"}
       }
     }
