@@ -15,7 +15,7 @@
       "bind": {
         "input": "select",
         "options": ["Import", "Export"],
-        "name": "Select Trade Type: "
+        "name": " "
       }
     }
   ],
