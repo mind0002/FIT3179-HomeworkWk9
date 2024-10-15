@@ -3,7 +3,7 @@
   "title": null,
   "width": "container",
   "height": "container",
-  "projection": {"type": "equalEarth"},
+  "projection": {"type": "equalEarth", "rotate": [-120.7751, 10] },
   "data": {
     "url": "https://raw.githubusercontent.com/mind0002/FIT3179-HomeworkWk9/main/js/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
@@ -126,8 +126,7 @@
         "longitude": {"value": 133.775136},
         "latitude": {"value": -25.274398},
         "text": {"value": "Australia"},
-        "opacity": {"value": 1},
-        "tooltip": {"value": "Australia"}
+        "opacity": {"value": 1}
       }
     },
     {
